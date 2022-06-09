@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  ga-celestial-body-db:
+    container_name: GA_CELESTIAL_BODY_DATA
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: GA_CELESTIAL_BODY
+      POSTGRES_INITDB_ARGS: '--encoding=UTF-8'
+      PGDATA: "/var/lib/postgresql/data/docker-data/ga-celestial-body"
+    ports:
+      - "1000:5432"
+    volumes:
+      - .:/var/lib/postgresql/data

@@ -1,0 +1,19 @@
+server:
+  port: 8101
+
+spring:
+  application:
+    name: ga-eureka
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+    register-with-eureka: false
+    fetch-registry: false

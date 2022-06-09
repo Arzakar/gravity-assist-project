@@ -1,0 +1,20 @@
+server:
+  port: 8201
+
+spring:
+  application:
+    name: ga-celestial-body
+
+  datasource:
+    url: jdbc:postgresql://localhost:1000/GA_CELESTIAL_BODY
+    username: admin
+    password: admin
+
+  liquibase:
+    enabled: true
+    change-log: classpath:database/master-changelog.xml
+    contexts: dev
+
+eureka:
+  instance:
+    hostname: localhost

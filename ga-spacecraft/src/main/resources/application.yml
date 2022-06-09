@@ -1,0 +1,10 @@
+server:
+  port: 8204
+
+spring:
+  application:
+    name: ga-spacecraft
+
+eureka:
+  instance:
+    hostname: localhost

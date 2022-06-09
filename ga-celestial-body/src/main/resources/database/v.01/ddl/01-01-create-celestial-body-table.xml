@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="ddl-01-01" author="Stepan Klimashin" runOnChange="true">
+        <sql splitStatements="true">
+            DROP TABLE IF EXISTS celestial_body CASCADE;
+        </sql>
+
+        <createTable tableName="celestial_body">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="mass" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="radius" type="double"/>
+            <column name="grav_parameter" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grav_radius" type="double"/>
+        </createTable>
+        <sql>
+            ALTER TABLE celestial_body ADD CHECK (radius > 0 and grav_parameter > 0)
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

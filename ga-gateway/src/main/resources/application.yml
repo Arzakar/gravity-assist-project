@@ -1,0 +1,32 @@
+server:
+  port: 8662
+
+spring:
+  application:
+    name: ga-gateway
+
+zuul:
+  routes:
+    ga-celestial-body:
+      path: /celestial-body/**
+      serviceId: ga-celestial-body
+
+  strip-prefix: true
+
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+ribbon:
+  eureka:
+    enabled: false
+
+ga-celestial-body:
+  ribbon:
+    listOfServers: localhost:8081

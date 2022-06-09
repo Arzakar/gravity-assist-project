@@ -10,15 +10,17 @@
         <version>0.0.0</version>
     </parent>
 
-    <artifactId>ga-math</artifactId>
+    <artifactId>ga-config</artifactId>
+    <packaging>jar</packaging>
 
-    <name>ga-math</name>
+    <name>ga-config</name>
+    <description>Configuration Service</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>${spring-cloud-eureka.version}</version>
+            <artifactId>spring-cloud-config-server</artifactId>
+            <version>${spring-cloud-config.version}</version>
         </dependency>
     </dependencies>
 

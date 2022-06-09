@@ -1,0 +1,10 @@
+server:
+  port: 8203
+
+spring:
+  application:
+    name: ga-orbit
+
+eureka:
+  instance:
+    hostname: localhost

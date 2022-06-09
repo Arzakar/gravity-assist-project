@@ -1,0 +1,10 @@
+server:
+  port: 8202
+
+spring:
+  application:
+    name: ga-math
+
+eureka:
+  instance:
+    hostname: localhost
