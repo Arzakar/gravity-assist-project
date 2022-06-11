@@ -6,6 +6,8 @@ spring:
     name: ga-gateway
 
 zuul:
+  ignored-services: *
+
   routes:
     ga-celestial-body:
       path: /celestial-body/**
