@@ -20,9 +20,9 @@ import javax.validation.constraints.Positive;
 @Getter
 @Setter
 @Accessors(chain = true)
-@Table(name = "celestial_body")
+@Table(name = "body")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CelestialBody {
+public class Body {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="seq")
@@ -36,17 +36,17 @@ public class CelestialBody {
 
     @Column(name = "mass", nullable = false)
     @Positive
-    Double mass;
+    Float mass;
 
     @Column(name = "radius")
     @Positive
-    Double radius;
+    Float radius;
 
     @Column(name = "grav_parameter", nullable = false)
     @Positive
-    Double gravParameter;
+    Float gravParameter;
 
     @Column(name = "grav_radius")
     @Positive
-    Double gravRadius;
+    Float gravRadius;
 }

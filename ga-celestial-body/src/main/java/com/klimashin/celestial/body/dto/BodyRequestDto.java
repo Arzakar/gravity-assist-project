@@ -8,13 +8,11 @@ import lombok.experimental.FieldDefaults;
 @Data
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CelestialBodyDto {
+public class BodyRequestDto {
 
     String name;
     float radius;
     float mass;
     float gravParameter;
     float gravRadius;
-    float orbitRadius;
-    float rotationPeriod;
 }

@@ -51,6 +51,7 @@
         <spring-cloud-zuul.version>2.2.9.RELEASE</spring-cloud-zuul.version>
         <spring-cloud-eureka.version>3.1.2</spring-cloud-eureka.version>
         <spring-cloud-gateway.version>3.0.4</spring-cloud-gateway.version>
+        <spring-cloud-feign.version>3.0.4</spring-cloud-feign.version>
     </properties>
 
     <dependencies>
@@ -83,6 +84,11 @@
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>${spring-cloud-feign.version}</version>
+        </dependency>
 
         <!-- Testing -->
         <dependency>
