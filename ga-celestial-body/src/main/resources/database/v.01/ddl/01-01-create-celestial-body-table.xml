@@ -13,21 +13,12 @@
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(50)">
-                <constraints unique="true" nullable="false"/>
-            </column>
-            <column name="mass" type="float">
-                <constraints nullable="false"/>
-            </column>
-            <column name="radius" type="float"/>
-            <column name="grav_parameter" type="float">
-                <constraints nullable="false"/>
-            </column>
-            <column name="grav_radius" type="float"/>
+            <column name="name" type="varchar(50)"/>
+            <column name="mass" type="double"/>
+            <column name="radius" type="double"/>
+            <column name="grav_parameter" type="double"/>
+            <column name="grav_radius" type="double"/>
         </createTable>
-        <sql>
-            ALTER TABLE body ADD CHECK (radius > 0 and grav_parameter > 0)
-        </sql>
     </changeSet>
 
 </databaseChangeLog>

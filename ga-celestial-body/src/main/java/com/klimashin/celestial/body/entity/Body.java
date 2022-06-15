@@ -31,22 +31,17 @@ public class Body {
     Integer id;
 
     @Column(name = "name", nullable = false, length = 50)
-    @NotBlank
     String name;
 
     @Column(name = "mass", nullable = false)
-    @Positive
-    Float mass;
+    Double mass;
 
     @Column(name = "radius")
-    @Positive
-    Float radius;
+    Double radius;
 
     @Column(name = "grav_parameter", nullable = false)
-    @Positive
-    Float gravParameter;
+    Double gravParameter;
 
     @Column(name = "grav_radius")
-    @Positive
-    Float gravRadius;
+    Double gravRadius;
 }

@@ -1,6 +1,7 @@
 package com.klimashin.celestial.body.mapper;
 
 import com.klimashin.celestial.body.dto.BodyDto;
+import com.klimashin.celestial.body.dto.BodyRequestDto;
 import com.klimashin.celestial.body.entity.Body;
 import org.mapstruct.Mapper;
 
@@ -8,5 +9,7 @@ import org.mapstruct.Mapper;
 public interface BodyMapper {
 
     BodyDto toDto(Body body);
+
     Body toEntity(BodyDto bodyDto);
+    Body toEntity(BodyRequestDto bodyRequestDto);
 }

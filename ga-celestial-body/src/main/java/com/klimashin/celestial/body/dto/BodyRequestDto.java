@@ -11,8 +11,8 @@ import lombok.experimental.FieldDefaults;
 public class BodyRequestDto {
 
     String name;
-    float radius;
-    float mass;
-    float gravParameter;
-    float gravRadius;
+    Double radius;
+    Double mass;
+    Double gravParameter;
+    Double gravRadius;
 }

@@ -12,23 +12,21 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class GravitationRadiusCalculatorTest {
-
-    private final GravitationRadiusCalculator calculator = new GravitationRadiusCalculator();
+class GravRadiusCalculatorTest {
 
     @ParameterizedTest
     @MethodSource("massAndGravitationRadiusMap")
     @DisplayName("Метод должен вернуть упрощённое значение гравитационного радиуса с погрешностью в 2 знака после запятой")
     void calculateGravitationRadiusTest(double mass, long expectedRadius) {
-        assertEquals(expectedRadius, calculator.calculateGravitationRadius(mass));
+        assertEquals(expectedRadius, GravRadiusCalculator.calculateGravRadius(mass));
     }
 
     private static Stream<Arguments> massAndGravitationRadiusMap() {
         return Stream.of(
                 Arguments.of(333_022 * Math.pow(10, 18), 354_200_000L),
-                Arguments.of(4_867_500 * Math.pow(10, 18), 1_354_100_000L),
-                Arguments.of(641_710 * Math.pow(10, 18), 491_600_000L),
-                Arguments.of(1_898_600 * Math.pow(10, 21), 26_744_000_000L)
+                Arguments.of(4_867_500 * Math.pow(10, 18), 1_354_190_000L),
+                Arguments.of(641_710 * Math.pow(10, 18), 491_690_000L),
+                Arguments.of(1_898_600 * Math.pow(10, 21), 26_750_000_000L)
         );
     }
 }

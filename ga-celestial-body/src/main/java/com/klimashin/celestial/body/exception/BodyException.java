@@ -6,10 +6,6 @@ public class BodyException extends RuntimeException {
         super(message);
     }
 
-    protected BodyException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
     public static class NotFoundBodyException extends BodyException {
         public NotFoundBodyException(String message) {
             super(message);
@@ -19,10 +15,6 @@ public class BodyException extends RuntimeException {
     public static class BadRequestBodyException extends BodyException {
         public BadRequestBodyException(String message) {
             super(message);
-        }
-
-        public BadRequestBodyException(String message, Throwable cause) {
-            super(message, cause);
         }
     }
 }
