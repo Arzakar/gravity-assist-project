@@ -7,8 +7,8 @@ public class BodyException extends RuntimeException {
     }
 
     public static class NotFoundBodyException extends BodyException {
-        public NotFoundBodyException(String message) {
-            super(message);
+        public NotFoundBodyException(String name) {
+            super(String.format("Небесное тело с именем '%s' не найдено", name));
         }
     }
 
@@ -16,5 +16,15 @@ public class BodyException extends RuntimeException {
         public BadRequestBodyException(String message) {
             super(message);
         }
+
+        public BadRequestBodyException(BadRequestReason badRequestReason, String value) {
+            super(switch (badRequestReason) {
+                case BODY_ALREADY_EXIST -> String.format("Небесное тело с именем '%s' уже существует", value);
+            });
+        }
+    }
+
+    public enum BadRequestReason {
+        BODY_ALREADY_EXIST
     }
 }

@@ -1,8 +1,11 @@
 package com.klimashin.celestial.body.service;
 
+import static com.klimashin.celestial.body.exception.BodyException.BadRequestReason.BODY_ALREADY_EXIST;
+
 import com.klimashin.celestial.body.dto.BodyDto;
 import com.klimashin.celestial.body.dto.BodyRequestDto;
-import com.klimashin.celestial.body.exception.BodyException;
+import com.klimashin.celestial.body.exception.BodyException.BadRequestBodyException;
+import com.klimashin.celestial.body.exception.BodyException.NotFoundBodyException;
 import com.klimashin.celestial.body.mapper.BodyMapper;
 import com.klimashin.celestial.body.model.GravRadiusCalculator;
 import com.klimashin.celestial.body.repository.BodyRepository;
@@ -32,19 +35,20 @@ public class BodyService {
     public BodyDto getBodyByName(String name) {
         return bodyRepository.findFirstByName(name)
                 .map(bodyMapper::toDto)
-                .orElseThrow(() -> new BodyException.NotFoundBodyException(String.format("Небесное тело с именем '%s' не найдено", name)));
+                .orElseThrow(() -> new NotFoundBodyException(name));
     }
 
-    public String saveBody(BodyRequestDto bodyRequestDto) {
+    @Transactional
+    public BodyDto saveBody(BodyRequestDto bodyRequestDto) {
         if (bodyRepository.findFirstByName(bodyRequestDto.getName()).isPresent()) {
-            throw new BodyException.BadRequestBodyException(String.format("Небесное тело с именем '%s' уже существует", bodyRequestDto.getName()));
+            throw new BadRequestBodyException(BODY_ALREADY_EXIST, bodyRequestDto.getName());
         }
 
         if (Objects.isNull(bodyRequestDto.getGravRadius())) {
             bodyRequestDto.setGravRadius(GravRadiusCalculator.calculateGravRadius(bodyRequestDto.getMass()));
         }
 
-        return bodyRepository.save(bodyMapper.toEntity(bodyRequestDto)).getName();
+        return bodyMapper.toDto(bodyRepository.save(bodyRequestDto));
     }
 
     @Transactional

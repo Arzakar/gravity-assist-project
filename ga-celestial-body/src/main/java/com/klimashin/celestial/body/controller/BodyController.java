@@ -28,7 +28,7 @@ public class BodyController implements BodyApi {
     }
 
     @Override
-    public String saveBody(BodyRequestDto bodyRequestDto) {
+    public BodyDto saveBody(BodyRequestDto bodyRequestDto) {
         return bodyService.saveBody(bodyRequestDto);
     }
 

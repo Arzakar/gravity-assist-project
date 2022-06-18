@@ -23,7 +23,7 @@ public interface BodyApi {
     BodyDto getCelestialBodyByName(@PathVariable("name") String name);
 
     @PostMapping
-    String saveBody(@RequestBody BodyRequestDto bodyDto);
+    BodyDto saveBody(@RequestBody BodyRequestDto bodyDto);
 
     @PostMapping(path = "/update/gravitation-radius")
     List<BodyDto> updateGravitationRadiusInAllBody();

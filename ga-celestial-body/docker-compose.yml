@@ -10,6 +10,6 @@ services:
       POSTGRES_INITDB_ARGS: '--encoding=UTF-8'
       PGDATA: "/var/lib/postgresql/data/docker-data/ga-celestial-body"
     ports:
-      - "1000:5432"
+      - "8301:5432"
     volumes:
       - .:/var/lib/postgresql/data

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Mercury",
+    "radius": null,
+    "mass": 3.33022E23,
+    "gravParameter": 2.2032E13,
+    "gravRadius": 3.542E8
+  },
+  {
+    "name": "Venus",
+    "radius": null,
+    "mass": 4.8675E24,
+    "gravParameter": 3.24859E14,
+    "gravRadius": 1.35419E9
+  }
+]

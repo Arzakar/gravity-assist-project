@@ -5,9 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.jackson.Jacksonized;
 
 @Data
 @Builder
+@Jacksonized
 @Accessors(chain = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BodyDto {
