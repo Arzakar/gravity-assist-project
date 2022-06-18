@@ -1,6 +1,7 @@
 package com.klimashin.celestial.body.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,13 +11,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.ParameterizedTest.ARGUMENTS_WITH_NAMES_PLACEHOLDER;
 
 @ExtendWith(MockitoExtension.class)
 class GravRadiusCalculatorTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "[{index}] Масса = {0} кг, Ожидаемый радиус = {1} м")
     @MethodSource("massAndGravitationRadiusMap")
-    @DisplayName("Метод должен вернуть упрощённое значение гравитационного радиуса с погрешностью в 2 знака после запятой")
+    @DisplayName("Должен вернуть упрощённое значение гравитационного радиуса с погрешностью в 3 знака после запятой")
     void calculateGravitationRadiusTest(double mass, long expectedRadius) {
         assertEquals(expectedRadius, GravRadiusCalculator.calculateGravRadius(mass));
     }
