@@ -6,7 +6,7 @@ spring:
     name: ga-celestial-body
 
   datasource:
-    url: jdbc:postgresql://localhost:1000/GA_CELESTIAL_BODY
+    url: jdbc:postgresql://localhost:8301/GA_CELESTIAL_BODY
     username: admin
     password: admin
 
@@ -18,3 +18,7 @@ spring:
 eureka:
   instance:
     hostname: localhost
+
+  client:
+    service-url:
+      defaultZone: http://localhost:8101/eureka/

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 2,
+    "name": "Mercury",
+    "radius": null,
+    "mass": 3.33022E23,
+    "gravParameter": 2.2032E13,
+    "gravRadius": 3.542E8
+  },
+  {
+    "id": 3,
+    "name": "Venus",
+    "radius": null,
+    "mass": 4.8675E24,
+    "gravParameter": 3.24859E14,
+    "gravRadius": 1.35419E9
+  },
+  {
+    "id": 5,
+    "name": "Mars",
+    "radius": 3389500.0,
+    "mass": 6.4171E23,
+    "gravParameter": 4.2828E13,
+    "gravRadius": 4.9169E8
+  },
+  {
+    "id": 6,
+    "name": "Jupiter",
+    "radius": null,
+    "mass": 1.8986E27,
+    "gravParameter": 1.26686534E17,
+    "gravRadius": 2.675E10
+  },
+  {
+    "id": 1,
+    "name": "Solar",
+    "radius": 6.95508E8,
+    "mass": 1.9891E30,
+    "gravParameter": 1.32712440018E20,
+    "gravRadius": 8.657E11
+  },
+  {
+    "id": 4,
+    "name": "Earth",
+    "radius": 6371000.0,
+    "mass": 5.97219E24,
+    "gravParameter": 3.98600435507E14,
+    "gravRadius": 2.0E9
+  }
+]
