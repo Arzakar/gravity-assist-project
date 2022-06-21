@@ -2,7 +2,11 @@ package com.klimashin.celestial.body.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +28,7 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -181,5 +186,17 @@ class BodyServiceTest {
         when(bodyRepository.findAll()).thenReturn(responseFindAll);
 
         assertEquals(expectedResponse, bodyService.updateGravRadiusInAllBodies());
+        verify(bodyRepository, times(2)).updateGravRadius(any(String.class), any(Double.class));
+    }
+
+    @Test
+    @DisplayName("Должен вернуть пустой список, если в базе не было записей, которые необходимо обновить")
+    void shouldNotUpdateGravRadiusInAllBodies() {
+        List<Body> responseFindAll = Collections.emptyList();
+
+        when(bodyRepository.findAll()).thenReturn(responseFindAll);
+
+        assertTrue(bodyService.updateGravRadiusInAllBodies().isEmpty());
+        verify(bodyRepository, never()).updateGravRadius(any(String.class), any(Double.class));
     }
 }

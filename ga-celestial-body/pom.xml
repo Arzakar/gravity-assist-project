@@ -20,7 +20,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring-boot-jpa.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -62,7 +61,25 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest.version}</version>
+                <configuration>
+                    <targetClasses>
+                        <param>com.klimashin.celestial.body.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.klimashin.celestial.body.*</param>
+                    </targetTests>
+                    <excludedClasses>
+                        <excludedClass>com.klimashin.celestial.body.CelestialBodyApplication</excludedClass>
+                        <param>com.klimashin.celestial.body.mapper.*</param>
+                    </excludedClasses>
+                </configuration>
+            </plugin>
         </plugins>
+
 
         <pluginManagement>
             <plugins>
@@ -82,7 +99,7 @@
                             <path>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok-mapstruct-binding</artifactId>
-                                <version>0.2.0</version>
+                                <version>${lombok-mapstruct-binding.version}</version>
                             </path>
                             <path>
                                 <groupId>org.mapstruct</groupId>
