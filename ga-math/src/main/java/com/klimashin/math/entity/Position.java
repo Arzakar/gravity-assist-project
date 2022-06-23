@@ -1,6 +1,6 @@
-package com.klimashin.math.model.math.entity;
+package com.klimashin.math.entity;
 
-import com.klimashin.math.model.math.entity.abstraction.Point;
+import com.klimashin.math.entity.abstraction.Point;
 
 import lombok.Builder;
 import lombok.NoArgsConstructor;

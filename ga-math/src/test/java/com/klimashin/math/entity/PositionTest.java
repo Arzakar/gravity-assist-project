@@ -1,7 +1,8 @@
-package com.klimashin.math.model.math.entity;
+package com.klimashin.math.entity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.klimashin.math.entity.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

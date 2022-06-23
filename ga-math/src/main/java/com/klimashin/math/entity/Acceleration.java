@@ -1,7 +1,7 @@
-package com.klimashin.math.model.math.entity;
+package com.klimashin.math.entity;
 
-import com.klimashin.math.model.math.entity.abstraction.Point;
-import com.klimashin.math.model.math.entity.abstraction.Vector;
+import com.klimashin.math.entity.abstraction.Point;
+import com.klimashin.math.entity.abstraction.Vector;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
@@ -14,11 +14,11 @@ public class Acceleration extends Vector<Acceleration> {
     }
 
     @Builder(builderMethodName = "builderByPoints")
-    public Acceleration(Point<? extends Point<?>> firstPoint, Point<? extends Point<?>> secondPoint) {
+    public Acceleration(Point<?> firstPoint, Point<?> secondPoint) {
         super(firstPoint, secondPoint);
     }
 
-    public Acceleration(double x, double y, double z, Point<? extends Point<?>> firstPoint, Point<? extends Point<?>> secondPoint) {
+    public Acceleration(double x, double y, double z, Point<?> firstPoint, Point<?> secondPoint) {
         super(x, y, z, firstPoint, secondPoint);
     }
 }

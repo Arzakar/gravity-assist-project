@@ -1,10 +1,11 @@
-package com.klimashin.math.model.math.entity.abstraction;
+package com.klimashin.math.entity.abstraction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import com.klimashin.math.model.math.entity.Position;
+import com.klimashin.math.entity.Position;
 
+import com.klimashin.math.entity.abstraction.Vector;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
