@@ -1,11 +1,10 @@
-package com.klimashin.math.model.math.entity.abstraction;
-
-import com.klimashin.math.model.math.entity.Position;
+package com.klimashin.math.entity.abstraction;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Objects;
@@ -13,6 +12,7 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @FieldDefaults(level = AccessLevel.PROTECTED)
 @SuppressWarnings("unchecked")
 public abstract class Vector<T extends Vector<T>> {
@@ -21,8 +21,8 @@ public abstract class Vector<T extends Vector<T>> {
     double y;
     double z;
 
-    Point<? extends Point<?>> firstPoint;
-    Point<? extends Point<?>> secondPoint;
+    Point<?> firstPoint;
+    Point<?> secondPoint;
 
     public Vector(double x, double y, double z) {
         this.x = x;
@@ -30,7 +30,7 @@ public abstract class Vector<T extends Vector<T>> {
         this.z = z;
     }
 
-    public Vector(Point<? extends Point<?>> firstPoint, Point<? extends Point<?>> secondPoint) {
+    public Vector(Point<?> firstPoint, Point<?> secondPoint) {
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
 
@@ -42,7 +42,7 @@ public abstract class Vector<T extends Vector<T>> {
     /**
      * TODO Добавить проверку, что secondPoint - firstPoint дают заданные x, y, z
      */
-    public Vector(double x, double y, double z, Point<? extends Point<?>> firstPoint, Point<? extends Point<?>> secondPoint) {
+    public Vector(double x, double y, double z, Point<?> firstPoint, Point<?> secondPoint) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -65,7 +65,7 @@ public abstract class Vector<T extends Vector<T>> {
         return (T) this;
     }
 
-    public T setFirstPoint(Point<? extends Point<?>> firstPoint) {
+    public T setFirstPoint(Point<?> firstPoint) {
         this.firstPoint = firstPoint;
 
         if (Objects.nonNull(secondPoint)) {
@@ -77,7 +77,7 @@ public abstract class Vector<T extends Vector<T>> {
         return (T) this;
     }
 
-    public T setSecondPoint(Point<? extends Point<?>> secondPoint) {
+    public T setSecondPoint(Point<?> secondPoint) {
         this.secondPoint = secondPoint;
 
         if (Objects.nonNull(firstPoint)) {

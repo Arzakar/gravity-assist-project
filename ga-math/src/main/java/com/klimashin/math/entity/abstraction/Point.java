@@ -1,4 +1,4 @@
-package com.klimashin.math.model.math.entity.abstraction;
+package com.klimashin.math.entity.abstraction;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
