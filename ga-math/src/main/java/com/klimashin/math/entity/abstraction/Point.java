@@ -24,6 +24,10 @@ public class Point {
         return this.changeX(deltaX).changeY(deltaY).changeZ(deltaZ);
     }
 
+    public Point change(Vector deltaVector) {
+        return change(deltaVector.getX(), deltaVector.getY(), deltaVector.getZ());
+    }
+
     public Point changeX(double deltaX) {
         this.x += deltaX;
         return this;

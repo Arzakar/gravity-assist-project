@@ -20,6 +20,7 @@
         <module>ga-celestial-body</module>
         <module>ga-config</module>
         <module>ga-math</module>
+        <module>ga-modeler</module>
         <module>ga-orbit</module>
         <module>ga-spacecraft</module>
         <module>ga-gateway</module>

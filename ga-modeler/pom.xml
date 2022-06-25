@@ -10,9 +10,9 @@
         <version>0.0.0</version>
     </parent>
 
-    <artifactId>ga-math</artifactId>
+    <artifactId>ga-modeler</artifactId>
 
-    <name>ga-math</name>
+    <name>ga-modeler</name>
 
     <dependencies>
         <dependency>
@@ -20,10 +20,23 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <version>${spring-cloud-eureka.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.klimashin</groupId>
+            <artifactId>ga-math</artifactId>
+            <version>0.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -55,14 +68,14 @@
                 <version>${pitest.version}</version>
                 <configuration>
                     <targetClasses>
-                        <param>com.klimashin.math.*</param>
+                        <param>com.klimashin.modeler.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>com.klimashin.math.*</param>
+                        <param>com.klimashin.modeler.*</param>
                     </targetTests>
                     <excludedClasses>
-                        <excludedClass>com.klimashin.math.MathApplication</excludedClass>
-                        <param>com.klimashin.math.mapper.*</param>
+                        <excludedClass>com.klimashin.modeler.MathApplication</excludedClass>
+                        <param>com.klimashin.modeler.mapper.*</param>
                     </excludedClasses>
                 </configuration>
             </plugin>
@@ -74,7 +87,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.1</version>
+                    <version>3.8.1</version>
                     <configuration>
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>

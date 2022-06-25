@@ -12,6 +12,14 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class VectorOperation {
 
+    public Vector toUnit(Vector vector) {
+        double scalar = getScalar(vector);
+
+        return vector.setX(vector.getX() / scalar)
+                .setY(vector.getY() / scalar)
+                .setZ(vector.getZ() / scalar);
+    }
+
     public Vector getUnit(Vector vector) {
         double scalar = getScalar(vector);
 

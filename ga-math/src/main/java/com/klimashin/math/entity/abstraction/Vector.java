@@ -76,6 +76,10 @@ public class Vector {
         return this.changeX(deltaX).changeY(deltaY).changeZ(deltaZ);
     }
 
+    public Vector change(Vector deltaVector) {
+        return change(deltaVector.getX(), deltaVector.getY(), deltaVector.getZ());
+    }
+
     public Vector changeX(double deltaX) {
         this.x += deltaX;
 
@@ -122,6 +126,10 @@ public class Vector {
         return VectorOperation.internalDiv(this, ratio);
     }
 
+    public Vector toUnit() {
+        return VectorOperation.toUnit(this);
+    }
+
     public Vector getUnit() {
         return VectorOperation.getUnit(this);
     }
@@ -133,5 +141,4 @@ public class Vector {
     public Vector rotateByZ(double angleInRad) {
         return VectorOperation.internalRotateByZ(this, angleInRad);
     }
-
 }
