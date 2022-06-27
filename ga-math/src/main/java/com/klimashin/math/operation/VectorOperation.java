@@ -8,6 +8,9 @@ import lombok.experimental.UtilityClass;
 
 import java.util.Arrays;
 
+/**
+ * TODO: Для ускорения работы методов можно использовать перегрузку с конкретными классами (Speed, Force etc.)
+ */
 @UtilityClass
 public class VectorOperation {
 
@@ -30,11 +33,24 @@ public class VectorOperation {
             }
         }
 
-        double x = Arrays.stream(vectors).map(Vector::getX).mapToDouble(Double::doubleValue).sum();
-        double y = Arrays.stream(vectors).map(Vector::getY).mapToDouble(Double::doubleValue).sum();
-        double z = Arrays.stream(vectors).map(Vector::getZ).mapToDouble(Double::doubleValue).sum();
+        /**
+         * От данной реализации пришлось отказаться, т.к. она работает в 2 раза медленнее обычного цикла
+         * double x = Arrays.stream(vectors).map(Vector::getX).mapToDouble(Double::doubleValue).sum();
+         * double y = Arrays.stream(vectors).map(Vector::getY).mapToDouble(Double::doubleValue).sum();
+         * double z = Arrays.stream(vectors).map(Vector::getZ).mapToDouble(Double::doubleValue).sum();
+         */
 
-        return createVectorOfSameClass(firstElementClass, x, y, z);
+        double x = 0;
+        double y = 0;
+        double z = 0;
+
+        for (Vector<?> vector : vectors) {
+            x += vector.getX();
+            y += vector.getY();
+            z += vector.getZ();
+        }
+
+       return createVectorOfSameClass(firstElementClass, x, y, z);
     }
 
     public UtilVector crossProduct(Vector<?> firstVector, Vector<?> secondVector) {
