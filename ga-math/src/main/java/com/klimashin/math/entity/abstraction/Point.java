@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@ToString
 @FieldDefaults(level = AccessLevel.PROTECTED)
 @SuppressWarnings("unchecked")
 public abstract class Point<T extends Point<T>> {
