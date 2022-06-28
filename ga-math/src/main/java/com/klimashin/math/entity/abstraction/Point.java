@@ -2,56 +2,40 @@ package com.klimashin.math.entity.abstraction;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
 
-@Getter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
+@Accessors(chain = true)
 @FieldDefaults(level = AccessLevel.PROTECTED)
-@SuppressWarnings("unchecked")
-public abstract class Point<T extends Point<T>> {
+public class Point {
 
     double x;
     double y;
     double z;
 
-    public T setX(double x) {
-        this.x = x;
-        return (T) this;
-    }
-
-    public T setY(double y) {
-        this.y = y;
-        return (T) this;
-    }
-
-    public T setZ(double z) {
-        this.z = z;
-        return (T) this;
-    }
-
-    public T change(double deltaX, double deltaY, double deltaZ) {
+    public Point change(double deltaX, double deltaY, double deltaZ) {
         return this.changeX(deltaX).changeY(deltaY).changeZ(deltaZ);
     }
 
-    public T changeX(double deltaX) {
+    public Point changeX(double deltaX) {
         this.x += deltaX;
-        return (T) this;
+        return this;
     }
 
-    public T changeY(double deltaY) {
+    public Point changeY(double deltaY) {
         this.y += deltaY;
-        return (T) this;
+        return this;
     }
 
-    public T changeZ(double deltaZ) {
+    public Point changeZ(double deltaZ) {
         this.z += deltaZ;
-        return (T) this;
+        return this;
     }
 }
