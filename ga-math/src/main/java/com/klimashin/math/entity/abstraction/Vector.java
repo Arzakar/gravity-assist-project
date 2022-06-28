@@ -1,28 +1,26 @@
 package com.klimashin.math.entity.abstraction;
 
+import com.klimashin.math.operation.VectorOperation;
 import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Objects;
 
-@Getter
+@Data
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
+@Accessors(chain = true)
 @FieldDefaults(level = AccessLevel.PROTECTED)
-@SuppressWarnings("unchecked")
-public abstract class Vector<T extends Vector<T>> {
+public class Vector {
 
     double x;
     double y;
     double z;
 
-    Point<?> firstPoint;
-    Point<?> secondPoint;
+    Point firstPoint;
+    Point secondPoint;
 
     public Vector(double x, double y, double z) {
         this.x = x;
@@ -30,7 +28,7 @@ public abstract class Vector<T extends Vector<T>> {
         this.z = z;
     }
 
-    public Vector(Point<?> firstPoint, Point<?> secondPoint) {
+    public Vector(Point firstPoint, Point secondPoint) {
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
 
@@ -42,7 +40,7 @@ public abstract class Vector<T extends Vector<T>> {
     /**
      * TODO Добавить проверку, что secondPoint - firstPoint дают заданные x, y, z
      */
-    public Vector(double x, double y, double z, Point<?> firstPoint, Point<?> secondPoint) {
+    public Vector(double x, double y, double z, Point firstPoint, Point secondPoint) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -50,22 +48,7 @@ public abstract class Vector<T extends Vector<T>> {
         this.secondPoint = secondPoint;
     }
 
-    public T setX(double x) {
-        this.x = x;
-        return (T) this;
-    }
-
-    public T setY(double y) {
-        this.y = y;
-        return (T) this;
-    }
-
-    public T setZ(double z) {
-        this.z = z;
-        return (T) this;
-    }
-
-    public T setFirstPoint(Point<?> firstPoint) {
+    public Vector setFirstPoint(Point firstPoint) {
         this.firstPoint = firstPoint;
 
         if (Objects.nonNull(secondPoint)) {
@@ -74,10 +57,10 @@ public abstract class Vector<T extends Vector<T>> {
             this.z = this.secondPoint.getZ() - firstPoint.getZ();
         }
 
-        return (T) this;
+        return this;
     }
 
-    public T setSecondPoint(Point<?> secondPoint) {
+    public Vector setSecondPoint(Point secondPoint) {
         this.secondPoint = secondPoint;
 
         if (Objects.nonNull(firstPoint)) {
@@ -86,40 +69,69 @@ public abstract class Vector<T extends Vector<T>> {
             this.z = secondPoint.getZ() - this.firstPoint.getZ();
         }
 
-        return (T) this;
+        return this;
     }
 
-    public T change(double deltaX, double deltaY, double deltaZ) {
+    public Vector change(double deltaX, double deltaY, double deltaZ) {
         return this.changeX(deltaX).changeY(deltaY).changeZ(deltaZ);
     }
 
-    public T changeX(double deltaX) {
+    public Vector changeX(double deltaX) {
         this.x += deltaX;
 
         if (Objects.nonNull(this.firstPoint) && Objects.nonNull(this.secondPoint)) {
             this.secondPoint.setX(this.firstPoint.getX() + this.x);
         }
 
-        return (T) this;
+        return this;
     }
 
-    public T changeY(double deltaY) {
+    public Vector changeY(double deltaY) {
         this.y += deltaY;
 
         if (Objects.nonNull(this.firstPoint) && Objects.nonNull(this.secondPoint)) {
             this.secondPoint.setY(this.firstPoint.getY() + this.y);
         }
 
-        return (T) this;
+        return this;
     }
 
-    public T changeZ(double deltaZ) {
+    public Vector changeZ(double deltaZ) {
         this.z += deltaZ;
 
         if (Objects.nonNull(this.firstPoint) && Objects.nonNull(this.secondPoint)) {
             this.secondPoint.setZ(this.firstPoint.getZ() + this.z);
         }
 
-        return (T) this;
+        return this;
     }
+
+    public Vector add(Vector vector) {
+        return VectorOperation.internalAdd(this, vector);
+    }
+
+    public Vector sub(Vector vector) {
+        return VectorOperation.internalSub(this, vector);
+    }
+
+    public Vector mult(double ratio) {
+        return VectorOperation.internalMult(this, ratio);
+    }
+
+    public Vector div(double ratio) {
+        return VectorOperation.internalDiv(this, ratio);
+    }
+
+    public Vector getUnit() {
+        return VectorOperation.getUnit(this);
+    }
+
+    public double getScalar() {
+        return VectorOperation.getScalar(this);
+    }
+
+    public Vector rotateByZ(double angleInRad) {
+        return VectorOperation.internalRotateByZ(this, angleInRad);
+    }
+
 }
